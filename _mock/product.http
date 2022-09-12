@@ -1,0 +1,11 @@
+@host = http://localhost:3000
+
+GET {{host}}
+###
+GET {{host}}/products
+###
+GET {{host}}/product/4
+###
+GET {{host}}/comments/2
+### 
+GET {{host}}/comments/1
