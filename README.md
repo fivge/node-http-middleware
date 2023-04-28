@@ -26,3 +26,13 @@
 winston
 winston-daily-rotate-file
 ```
+
+### fastify
+
+https://www.fastify.io/docs/latest/Guides/Getting-Started/
+
+#### plugin
+
+https://www.fastify.io/docs/latest/Reference/Routes/
+
+https://www.fastify.io/docs/latest/Reference/Plugins/#plugin-options

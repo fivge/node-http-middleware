@@ -1,3 +1,5 @@
+import { FastifyInstance } from 'fastify';
+
 export class Product {
   // 商品类
   constructor(
@@ -41,22 +43,29 @@ const comments: Comment[] = [
   new Comment(4, 2, '2018-09-27 21:01:23', '张三', 3.5, 'comment product2')
 ];
 
-export class Routes {
-  public routes(app): void {
-    app.route('/').get((req, res) => {
-      res.status(200).send({ message: 'This is root' });
-    });
+const routes = async (fastify: FastifyInstance, options) => {
+  fastify.get('/', async (request, reply) => {
+    return { message: 'This is root' };
+  });
 
-    app.route('/products').get((req, res) => {
-      res.status(200).json(products);
-    });
+  fastify.get('/products', async (request, reply) => {
+    return products;
+  });
 
-    app.route('/product/:id').get((req, res) => {
-      res.status(200).json(products.find(product => product.id == req.params.id));
-    });
+  fastify.get('/product/:id', async (request, reply) => {
+    // request.params
+    console.log('req', request);
+    // return products.find(product => product.id == request.params.id);
+    return { hello: 'world' };
+  });
 
-    app.route('/comments/:id').get((req, res) => {
-      res.status(200).json(comments.filter(comment => comment.productId == req.params.id));
-    });
-  }
-}
+  // fastify.get('/comments/:id', async (request, reply) => {
+  //   return comments.filter(comment => comment.productId == req.params.id);
+  // });
+
+  fastify.get('/ping', async (request, reply) => {
+    return 'pong';
+  });
+};
+
+export default routes;
