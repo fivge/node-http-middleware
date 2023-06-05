@@ -5,6 +5,10 @@ GET {{host}}
 ###
 GET {{host}}/ping
 ###
+POST {{host}}/ping
+###
+OPTIONS {{host}}/ping
+###
 GET {{host}}/products
 ###
 GET {{host}}/product/4

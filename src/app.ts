@@ -1,37 +1,18 @@
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
+import Fastify, { FastifyInstance } from "fastify";
+import cors from "@fastify/cors";
 
-import { Routes } from './routes/product-routes';
+import Routes from "./routes/product-routes";
 
-class App {
-  public app: express.Application;
-  public routePrv: Routes = new Routes();
+const app: FastifyInstance = Fastify({ logger: false });
 
-  constructor() {
-    this.app = express();
-    this.config();
-    this.routePrv.routes(this.app);
-  }
+app.register(cors, {
+  origin: true,
+  methods: "PUT, POST, GET, DELETE, OPTIONS",
+  allowedHeaders: "Content-Type, Content-Length, Authorization, Accept, X-Requested-With",
+  optionsSuccessStatus: 204,
+  strictPreflight: false,
+});
 
-  private config(): void {
-    // support application/json type post data
-    this.app.use(bodyParser.json());
-    //support application/x-www-form-urlencoded post data
-    this.app.use(bodyParser.urlencoded({ extended: false }));
-    // 设置
-    this.app.all('*', function (req, res, next) {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With');
-      res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-      res.header('Content-Type', 'application/json;charset=utf-8');
+app.register(Routes);
 
-      if (req.method === 'OPTIONS') {
-        res.sendStatus(200);
-      } else {
-        next();
-      }
-    });
-  }
-}
-
-export default new App().app;
+export default app;
