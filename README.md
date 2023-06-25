@@ -36,3 +36,7 @@ https://www.fastify.io/docs/latest/Guides/Getting-Started/
 https://www.fastify.io/docs/latest/Reference/Routes/
 
 https://www.fastify.io/docs/latest/Reference/Plugins/#plugin-options
+
+#### IoC
+
+<https://github.com/tsedio/tsed>(TODO)
