@@ -1,20 +1,15 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "_version": "20.1.0",
   "compilerOptions": {
-    "target": "es6",
-    // "emitDecoratorMetadata": true,
-    // "experimentalDecorators": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "pretty": true,
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./lib"
-  },
-  "include": [
-    "lib/**/*.ts"
-  ],
-  //   "include": ["**/*"],
-  "exclude": [
-    "node_modules"
-  ]
+    "lib": ["es2023"],
+    "module": "node16",
+    "target": "es2022",
+    // "strict": true,
+    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node16",
+    "outDir": "./dist"
+  }
 }
