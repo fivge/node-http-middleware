@@ -1,42 +1,14 @@
-### middleware
+# node http middleware
 
-- express
-- restify
-- fastify
+### framework
 
-### server
+- ~~express~~
+- ~~restify~~
+- [tsed](https://github.com/tsedio/tsed)
+- ✅ [fastify](https://github.com/fastify/fastify)
 
-- rest api
-- mock
-- ts
-- log
-  morgan
-  winston
-  pino
-- mysql / mongo / redis
-- ws
-- google-protobuf
-- auth2
-  cookie-parser
-- debug
+### features
 
-> winston
-
-```
-winston
-winston-daily-rotate-file
-```
-
-### fastify
-
-https://www.fastify.io/docs/latest/Guides/Getting-Started/
-
-#### plugin
-
-https://www.fastify.io/docs/latest/Reference/Routes/
-
-https://www.fastify.io/docs/latest/Reference/Plugins/#plugin-options
-
-#### IoC
-
-<https://github.com/tsedio/tsed>(TODO)
+- logger
+- cors `@fastify/cors`
+- proxy `@fastify/http-proxy`

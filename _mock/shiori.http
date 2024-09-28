@@ -1,0 +1,15 @@
+@url=http://localhost:5001/shiori
+@session=xxx
+
+### 
+GET {{url}}/
+
+### 
+POST {{url}}/api/v1/auth/login
+Content-Type: application/json
+
+{"username":"xxx","password":"xxx","remember":false}
+
+###
+GET {{url}}/api/tags
+X-Session-Id: {{session}}

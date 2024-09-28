@@ -1,9 +1,10 @@
 import Fastify, { FastifyInstance } from "fastify";
 import cors from "@fastify/cors";
+const proxy = require("@fastify/http-proxy");
 
 import Routes from "./routes/product-routes";
 
-const app: FastifyInstance = Fastify({ logger: process.env.PROD === "true" });
+const app: FastifyInstance = Fastify({ logger: process.env.PROD === "true" || process.env.LOGGER === "true" });
 
 app.register(cors, {
   origin: true,
@@ -13,7 +14,15 @@ app.register(cors, {
   strictPreflight: false,
 });
 
-app.register(require("@fastify/http-proxy"), {
+app.get("/", async (request, reply) => {
+  return { message: "This is root" };
+});
+
+app.get("/ping", async (request, reply) => {
+  return "pong";
+});
+
+app.register(proxy, {
   upstream: process.env.SHIORI_URL,
   prefix: "/shiori",
   replyOptions: {
