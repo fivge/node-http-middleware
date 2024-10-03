@@ -12,3 +12,10 @@
 - logger
 - cors `@fastify/cors`
 - proxy `@fastify/http-proxy`
+
+### TODO
+
+- [ ] add watch mode
+      https://tsx.is/watch-mode
+- [ ] build with swc
+      ref https://github.com/melroy89/fastify-node-ts-swc-demo
